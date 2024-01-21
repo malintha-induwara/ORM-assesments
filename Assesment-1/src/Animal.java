@@ -3,11 +3,7 @@ public class Animal {
     private String color;
     private int noOfLegs;
 
-    public Animal(double speed, String color, int noOfLegs) {
-        this.speed = speed;
-        this.color = color;
-        this.noOfLegs = noOfLegs;
-    }
+
 
     public double getSpeed() {
         return speed;
