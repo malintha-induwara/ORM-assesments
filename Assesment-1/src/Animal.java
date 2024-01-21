@@ -35,6 +35,9 @@ public class Animal {
         this.noOfLegs = noOfLegs;
     }
 
+
+    public void hello(){}
+
     @Override
     public String toString() {
         return "Animal{" +

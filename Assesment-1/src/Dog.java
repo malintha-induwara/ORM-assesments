@@ -11,5 +11,10 @@ public class Dog extends Animal{
         System.out.println("Dog speed is "+speed);
     }
 
+    @Override
+    public void hello(){
+        System.out.println("ddd");
+    }
+
 }
 
