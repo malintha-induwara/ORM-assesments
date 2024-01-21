@@ -4,6 +4,12 @@ public class Animal {
     private int noOfLegs;
 
 
+    public void run(){
+
+    }
+    public void run(int speed){
+
+    }
 
     public double getSpeed() {
         return speed;
