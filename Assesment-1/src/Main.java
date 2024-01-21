@@ -3,16 +3,24 @@ public class Main {
 
 
         //Animal
-        Animal animal = new Animal();
+//        Animal animal = new Animal();
+//        animal.run();
+//        animal.run(10);
+
+
+
+        //Dog
+//        Dog dog = new Dog();
+//        dog.run();
+//        dog.run(10);
+//
+
+        Animal animal = new Dog();
         animal.run();
         animal.run(10);
 
 
 
-        //Dog
-        Dog dog = new Dog();
-        dog.run();
-        dog.run(10);
 
 
     }
