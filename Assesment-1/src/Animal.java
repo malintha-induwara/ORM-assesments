@@ -5,10 +5,10 @@ public class Animal {
 
 
     public void run(){
-
+        System.out.println("This is Run of Animal");
     }
     public void run(int speed){
-
+        System.out.println("This is speed "+speed+" of Animal");
     }
 
     public double getSpeed() {

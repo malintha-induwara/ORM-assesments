@@ -5,12 +5,14 @@ public class Main {
         //Animal
         Animal animal = new Animal();
         animal.run();
+        animal.run(10);
 
 
 
         //Dog
         Dog dog = new Dog();
-        System.out.println(dog.getSpeed());
+        dog.run();
+        dog.run(10);
 
 
     }
