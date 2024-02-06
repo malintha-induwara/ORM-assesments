@@ -1,11 +1,14 @@
 package config;
 
+import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+
 
 public class SessionFactoryConfig {
     private static SessionFactoryConfig sessionFactoryConfig;
@@ -21,14 +24,20 @@ public class SessionFactoryConfig {
 
         //2. Create a Metadata Object
         Metadata metadata = new MetadataSources(serviceRegistry)
-//                .addAnnotatedClass()
+                .addAnnotatedClass(Customer.class)
                 .getMetadataBuilder().build();
+
+        //addAnnotatedClass() is used to add the annotated class to the metadata
+
+
 
         //3. Create a Session Factory
         SessionFactory sessionFactory = metadata.buildSessionFactory();
 
         //Create and Open the session
         return sessionFactory.openSession();
+
+        //5. close the session
     }
 }
 
