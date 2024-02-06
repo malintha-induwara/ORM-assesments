@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Entity // this is used to tell hibernate that this class is an entity
 @Table(name = "customer") // this is used to tell hibernate that this class is mapped to a table
 public class Customer {
-
     @Id //This defines primary key of the table
     @Column(name = "customer_id") //this is used to tell hibernate that this field is a colum in the table
     private int id;
