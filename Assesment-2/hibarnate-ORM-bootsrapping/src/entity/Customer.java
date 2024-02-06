@@ -6,14 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//1.@Entity(name = "customer")
 
-@Entity
-@Table(name = "customer")
+
+// Two types of annotations are used to map a class to a table
+
+//1.@Entity(name = "customer")
+//2.
+
+@Entity // this is used to tell hibernate that this class is an entity
+@Table(name = "customer") // this is used to tell hibernate that this class is mapped to a table
 public class Customer {
 
     @Id //This defines primary key of the table
-    @Column(name = "customer_id")
+    @Column(name = "customer_id") //this is used to tell hibernate that this field is a colum in the table
     private int id;
 
     @Column(name = "customer_name")

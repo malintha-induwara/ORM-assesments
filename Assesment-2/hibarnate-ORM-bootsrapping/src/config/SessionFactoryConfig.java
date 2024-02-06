@@ -27,11 +27,17 @@ public class SessionFactoryConfig {
                 .addAnnotatedClass(Customer.class)
                 .getMetadataBuilder().build();
 
+        //addAnnotatedClass() is used to add the annotated class to the metadata
+
+
+
         //3. Create a Session Factory
         SessionFactory sessionFactory = metadata.buildSessionFactory();
 
         //Create and Open the session
         return sessionFactory.openSession();
+
+        //5. close the session
     }
 }
 
