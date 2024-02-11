@@ -11,7 +11,7 @@ public class Main {
 
         Transaction transaction = session.beginTransaction();
 
-        Customer customer = new Customer(1,"Saman","Panadura",50000);
+        Customer customer = new Customer(2,"Saman","Panadura",50000);
         session.save(customer);
         transaction.commit();
 

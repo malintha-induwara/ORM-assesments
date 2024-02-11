@@ -21,7 +21,7 @@ public class SessionFactoryConfig {
     }
 
     public Session getSession(){
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().build();
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().loadProperties("hibernate.properties").build();
         Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().build();
         SessionFactory sessionFactory = metadata.buildSessionFactory();
         return sessionFactory.openSession();
