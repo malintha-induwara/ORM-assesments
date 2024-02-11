@@ -1,8 +1,12 @@
 import config.SessionFactoryConfig;
+import embeddad.MobileNo;
 import embeddad.NameIdentifier;
 import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +18,19 @@ public class Main {
         customer.setId(1);
         customer.setAddress("Galle");
         customer.setSalary(30000);
+
+        MobileNo dialog = new MobileNo("dialog","0001");
+        MobileNo mobiltel = new MobileNo("mobitel","0002");
+        MobileNo airtel = new MobileNo("airtel","0003");
+
+        List<MobileNo> numList = new ArrayList<>();
+        numList.add(dialog);
+        numList.add(mobiltel);
+        numList.add(airtel);
+
+        customer.setMobileNos(numList);
+
+
 
         NameIdentifier nameIdentifier = new NameIdentifier("Saman","Kumara","Hello");
         customer.setName(nameIdentifier);

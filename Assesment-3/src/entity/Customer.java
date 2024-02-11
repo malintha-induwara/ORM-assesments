@@ -1,14 +1,14 @@
 package entity;
 
 
+import embeddad.MobileNo;
 import embeddad.NameIdentifier;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table (name = "customer")
@@ -28,8 +28,11 @@ public class Customer {
     @Column(name = "customer_salary")
     private double salary;
 
-    @Column(name = "customer_number")
-    private int mobileNum;
+
+    @ElementCollection
+    @CollectionTable(name = "customer_mobile_no",
+    joinColumns = @JoinColumn(name = "customer_id"))
+    private List<MobileNo> mobileNos = new ArrayList<>();
 
     @CreationTimestamp
     private Timestamp timestamp;
@@ -37,12 +40,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, NameIdentifier name, String address, double salary, int mobileNum, Timestamp timestamp) {
+    public Customer(int id, NameIdentifier name, String address, double salary, List<MobileNo> mobileNos, Timestamp timestamp) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
-        this.mobileNum = mobileNum;
+        this.mobileNos = mobileNos;
         this.timestamp = timestamp;
     }
 
@@ -78,12 +81,12 @@ public class Customer {
         this.salary = salary;
     }
 
-    public int getMobileNum() {
-        return mobileNum;
+    public List<MobileNo> getMobileNos() {
+        return mobileNos;
     }
 
-    public void setMobileNum(int mobileNum) {
-        this.mobileNum = mobileNum;
+    public void setMobileNos(List<MobileNo> mobileNos) {
+        this.mobileNos = mobileNos;
     }
 
     public Timestamp getTimestamp() {
@@ -92,18 +95,6 @@ public class Customer {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name=" + name +
-                ", address='" + address + '\'' +
-                ", salary=" + salary +
-                ", mobileNum=" + mobileNum +
-                ", timestamp=" + timestamp +
-                '}';
     }
 }
 
