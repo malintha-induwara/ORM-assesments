@@ -7,12 +7,12 @@ public class Main {
     public static void main(String[] args) {
 
         //Save
-//        Session session = SessionFactoryConfig.getInstance().getSession();
-//        Transaction transaction = session.beginTransaction();
-//        Customer customer = new Customer(3,"Saman","Panadura",50000);
-//        session.save(customer);
-//        transaction.commit();
-//        session.close();
+        Session session = SessionFactoryConfig.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        Customer customer = new Customer(1,"Saman","Panadura",50000,07711077);
+        session.save(customer);
+        transaction.commit();
+        session.close();
 
         //Exists
 //        Session session = SessionFactoryConfig.getInstance().getSession();
@@ -33,12 +33,12 @@ public class Main {
 
 
         //Delete
-        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
-        Transaction deleteTransaction = deleteSession.beginTransaction();
-        Customer deleteCustomer = deleteSession.get(Customer.class, 3);
-        deleteSession.delete(deleteCustomer);
-        deleteTransaction.commit();
-        deleteSession.close();
+//        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
+//        Transaction deleteTransaction = deleteSession.beginTransaction();
+//        Customer deleteCustomer = deleteSession.get(Customer.class, 3);
+//        deleteSession.delete(deleteCustomer);
+//        deleteTransaction.commit();
+//        deleteSession.close();
 
 
     }

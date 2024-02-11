@@ -23,14 +23,18 @@ public class Customer {
     @Column(name = "customer_salary")
     private double salary;
 
+    @Column(name = "customer_number")
+    private int mobileNum;
+
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, double salary) {
+    public Customer(int id, String name, String address, double salary, int mobileNum) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
+        this.mobileNum = mobileNum;
     }
 
     public int getId() {
@@ -65,15 +69,12 @@ public class Customer {
         this.salary = salary;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", salary=" + salary +
-                '}';
+    public int getMobileNum() {
+        return mobileNum;
     }
 
+    public void setMobileNum(int mobileNum) {
+        this.mobileNum = mobileNum;
+    }
 }
 
