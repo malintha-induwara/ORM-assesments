@@ -1,6 +1,7 @@
 package entity;
 
 
+import embeddad.NameIdentifier;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ public class Customer {
     private int id;
 
     @Column(name = "customer_name")
-    private String name;
+    private NameIdentifier name;
 
     @Column(name = "customer_address")
     private String address;
@@ -35,12 +36,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, double salary, int mobileNum) {
+    public Customer(int id, NameIdentifier name, String address, double salary, int mobileNum, Timestamp timestamp) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.salary = salary;
         this.mobileNum = mobileNum;
+        this.timestamp = timestamp;
     }
 
     public int getId() {
@@ -51,11 +53,11 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
+    public NameIdentifier getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(NameIdentifier name) {
         this.name = name;
     }
 
@@ -81,6 +83,26 @@ public class Customer {
 
     public void setMobileNum(int mobileNum) {
         this.mobileNum = mobileNum;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name=" + name +
+                ", address='" + address + '\'' +
+                ", salary=" + salary +
+                ", mobileNum=" + mobileNum +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }
 

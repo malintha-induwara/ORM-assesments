@@ -1,4 +1,5 @@
 import config.SessionFactoryConfig;
+import embeddad.NameIdentifier;
 import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,7 +10,16 @@ public class Main {
         //Save
         Session session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        Customer customer = new Customer(1,"Saman","Panadura",50000,07711077);
+        Customer customer = new Customer();
+        customer.setId(1);
+        customer.setAddress("Galle");
+        customer.setSalary(30000);
+
+        NameIdentifier nameIdentifier = new NameIdentifier("Saman","Kumara","Hello");
+        customer.setName(nameIdentifier);
+
+
+
         session.save(customer);
         transaction.commit();
         session.close();
