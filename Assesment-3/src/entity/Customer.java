@@ -21,7 +21,8 @@ public class Customer {
     @Column(name = "customer_name")
     private NameIdentifier name;
 
-    @Column(name = "customer_address")
+    //You can define columns using following attributes as well
+    @Column(name = "customer_address" , length = 100 ,nullable = false)
     private String address;
 
     @Column(name = "customer_salary")
