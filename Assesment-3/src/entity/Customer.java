@@ -1,10 +1,13 @@
 package entity;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Entity
 @Table (name = "customer")
@@ -25,6 +28,9 @@ public class Customer {
 
     @Column(name = "customer_number")
     private int mobileNum;
+
+    @CreationTimestamp
+    private Timestamp timestamp;
 
     public Customer() {
     }
