@@ -12,14 +12,8 @@ public class SessionFactoryConfig {
 
     private static SessionFactoryConfig sessionFactoryConfig;
 
-    private final SessionFactory sessionFactory;
-
 
     private SessionFactoryConfig(){
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().loadProperties("hibernate.properties").build();
-        Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().build();
-        this.sessionFactory=metadata.buildSessionFactory();
-
     }
 
     public static SessionFactoryConfig getInstance(){
@@ -27,7 +21,10 @@ public class SessionFactoryConfig {
     }
 
     public Session getSession(){
-        return this.sessionFactory.openSession();
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().loadProperties("hibernate.properties").build();
+        Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(Customer.class).getMetadataBuilder().build();
+        SessionFactory sessionFactory = metadata.buildSessionFactory();
+        return sessionFactory.openSession();
     }
 
 
