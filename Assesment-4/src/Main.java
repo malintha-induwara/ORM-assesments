@@ -4,6 +4,7 @@ import embeddad.NameIdentifier;
 import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import repository.CustomerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +12,6 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        //Save
-
-        //Get a session from the session factory
-        Session session = SessionFactoryConfig.getInstance().getSession();
-
-
-        //You have to start a transaction otherwise it's not going to save
-        Transaction transaction = session.beginTransaction();
 
         //Create Customer object
         Customer customer = new Customer();
@@ -41,21 +34,17 @@ public class Main {
 
         //Set the array list
         customer.setMobileNos(numList);
-
-
-        //If customer has composite attributes define another class
         NameIdentifier nameIdentifier = new NameIdentifier("Saman", "Kumara", "Hello");
         customer.setName(nameIdentifier);
 
+        //Save the customer
+        save(customer);
 
-        //Save
-        //In later versions like 6.4.4 save method is deprecated so instead use session.persist()
-        session.save(customer);
-        transaction.commit();
+    }
 
-        //Finally close the session
-        session.close();
-
+    private static void save(Customer customer) {
+        CustomerRepository customerRepository = new CustomerRepository();
+        customerRepository.saveCustomer(customer);
     }
 
     public static void exists() {
