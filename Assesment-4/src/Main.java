@@ -37,8 +37,15 @@ public class Main {
         NameIdentifier nameIdentifier = new NameIdentifier("Saman", "Kumara", "Hello");
         customer.setName(nameIdentifier);
 
-        //Save the customer
-        save(customer);
+        CustomerRepository customerRepository = new CustomerRepository();
+        Customer custom = customerRepository.getCustomer( 1);
+
+
+        customerRepository = new CustomerRepository();
+        customerRepository.updateCustomer(custom);
+
+
+
 
     }
 
@@ -47,34 +54,24 @@ public class Main {
         customerRepository.saveCustomer(customer);
     }
 
-    public static void exists() {
+    public static Customer get() {
         //Check whether the customer id 2 on the table or not
-        Session session = SessionFactoryConfig.getInstance().getSession();
-        Customer exist = session.get(Customer.class, 1);
-        System.out.println(exist);
-        session.close();
+        CustomerRepository customerRepository = new CustomerRepository();
+        Customer exist = customerRepository.getCustomer( 1);
+        return exist;
     }
 
-    public static void update() {
+    public static void update(Customer customer) {
         //Update the customer details
-        Session session = SessionFactoryConfig.getInstance().getSession();
-        Transaction updateTransaction = session.beginTransaction();
-        Customer existCustomer = session.get(Customer.class, 1);
-        existCustomer.setAddress("Galle");
-        session.update(existCustomer);
-        updateTransaction.commit();
-        session.close();
+        CustomerRepository customerRepository = new CustomerRepository();
+        customerRepository.updateCustomer(customer);
     }
 
 
-    public static void delete() {
+    public static void delete(Customer customer) {
         //Delete customer
-        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
-        Transaction deleteTransaction = deleteSession.beginTransaction();
-        Customer deleteCustomer = deleteSession.get(Customer.class, 1);
-        deleteSession.delete(deleteCustomer);
-        deleteTransaction.commit();
-        deleteSession.close();
+      CustomerRepository customerRepository = new CustomerRepository();
+      customerRepository.deleteCustomer(customer);
     }
 
 

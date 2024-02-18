@@ -58,10 +58,9 @@ public class CustomerRepository {
     }
 
 
-    public boolean deleteCustomer(int id){
+    public boolean deleteCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
         try{
-            Customer customer = session.get(Customer.class, id);
             session.delete(customer);
             transaction.commit();
             return true;
@@ -70,7 +69,9 @@ public class CustomerRepository {
         }finally {
             session.close();
         }
+
     }
+
 
 }
 
