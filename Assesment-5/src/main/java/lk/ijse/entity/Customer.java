@@ -3,8 +3,13 @@ package lk.ijse.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.*;
+import lombok.ToString;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -21,5 +26,8 @@ public class Customer {
 
     @Column(name = "customer_address")
     private String address;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER ,mappedBy = "customer")
+    private List<Order> orders = new ArrayList<>();
 }
 

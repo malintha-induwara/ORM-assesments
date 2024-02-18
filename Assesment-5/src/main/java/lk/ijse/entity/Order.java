@@ -8,8 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -27,5 +25,9 @@ public class Order {
     @CreationTimestamp
     @Column(name = "order_date_time")
     private Timestamp order_data_time;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }
 
