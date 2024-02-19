@@ -1,5 +1,7 @@
 package lk.ijse.entity;
 
+import lk.ijse.embedded.OrderDetailPK;
+
 import javax.persistence.*;
 
 

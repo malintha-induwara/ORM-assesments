@@ -4,6 +4,10 @@ import lk.ijse.config.SessionFactoryConfig;
 import lk.ijse.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class CustomerRepository {
 
@@ -51,6 +55,8 @@ public class CustomerRepository {
             transaction.commit();
             return true;
         }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
             return false;
         }finally {
             session.close();
@@ -65,6 +71,8 @@ public class CustomerRepository {
             transaction.commit();
             return true;
         }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
             return false;
         }finally {
             session.close();
@@ -72,6 +80,33 @@ public class CustomerRepository {
 
     }
 
+
+    public List<Object []> getAllCustomerSQL(){
+        String sql = "SELECT * FROM customer";
+        NativeQuery query = session.createNativeQuery(sql);
+        List<Object []> list= query.list();
+
+        for (Object customer:list){
+            System.out.println(customer);
+        }
+
+        // So if you are trying to get the details use following lines to convert into customer list
+//        NativeQuery<Customer> query = session.createNativeQuery(sql, Customer.class);
+//        List<Customer> list = query.list();
+
+        session.close();
+        return list;
+    }
+
+
+
+    public List<Customer> getAllCustomerJPQL(){
+        String sql = "SELECT C FROM Customer AS C";
+        Query query = session.createQuery(sql);
+        List<Customer> list = query.list();
+        session.close();
+        return list;
+    }
 
 }
 

@@ -1,4 +1,4 @@
-package lk.ijse.entity;
+package lk.ijse.embedded;
 
 
 import lombok.AllArgsConstructor;
