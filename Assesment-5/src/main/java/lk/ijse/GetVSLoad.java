@@ -20,7 +20,7 @@ public class GetVSLoad {
 
         //2.load
         Session loadSession = SessionFactoryConfig.getInstance().getSession();
-        System.out.println("--------------Get----------------");
+        System.out.println("--------------Load----------------");
         Customer loadCus = loadSession.load(Customer.class, 2);
 
         System.out.println("Customer Id of Get: " + loadCus.getId());
