@@ -32,6 +32,9 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+
+    //Fetch meaning retrieve or get
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "order")
     private List<OrderDetail> orderDetailsList = new ArrayList<>();
 }

@@ -19,6 +19,9 @@ public class GetVSLoad {
 
 
         //2.load
+        //This way it think there is a customer object called 2 this method also use lazy loading
+        //Aka Proxy object
+
         Session loadSession = SessionFactoryConfig.getInstance().getSession();
         System.out.println("--------------Load----------------");
         Customer loadCus = loadSession.load(Customer.class, 2);
