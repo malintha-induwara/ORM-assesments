@@ -2,6 +2,8 @@ package lk.ijse.repository;
 
 import lk.ijse.config.SessionFactoryConfig;
 import lk.ijse.entity.Customer;
+import lk.ijse.entity.Order;
+import lk.ijse.projection.CustomerProjection;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
@@ -108,5 +110,35 @@ public class CustomerRepository {
         return list;
     }
 
+
+    public List<Order> getOrdersByCustomerId(int cusId){
+        String sql = "SELECT O FROM Order As O\n" +
+                "INNER JOIN Customer AS C ON O.customer.id=C.id\n" +
+                " WHERE O.customer.id = :cus_id";
+
+        Query query = session.createQuery(sql);
+        query.setParameter("cus_id",cusId);
+        List<Order> list = query.list();
+        session.close();
+        return list;
+
+    }
+
+    public List<Customer> getCustomerHQL(){
+        String sql = "FROM Customer";
+        Query query = session.createQuery(sql);
+        List<Customer> customerList = query.list();
+        session.close();
+        return customerList;
+    }
+
+    public List<CustomerProjection> getCustomerProjection(){
+        String sql = "SELECT new lk.ijse.projection.CustomerProjection(C.id,C.name) FROM Customer AS C";
+        session.createQuery(sql);
+        Query query = session.createQuery(sql);
+        List list = query.list();
+        session.close();
+        return list;
+    }
 }
 

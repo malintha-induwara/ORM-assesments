@@ -1,0 +1,55 @@
+Inverse - Main character - mapped by use in inverse
+Outverse - Object chracter
+
+
+Why implement serializible?
+RMI
+*If communicate happens thorough network use serialziable
+*serialization and de serialization
+
+
+SQL Query Languages
+1) Native SQL - SELECT * FROM customer WHERE id =1 ;
+2)JPQL [Java persistnace Query Language] - SELECT C FROM Customer As C;  as-- alias
+
+if you want all use C , only id C.id
+
+Projection
+
+There are muliple ways to projection
+1) Constructor Projection -- using class
+2)Interface Projection -- using interface also attributes should be in assending 
+3)
+
+
+
+Hibernate Life Cycle
+
+when creating a customer entity object its in the transent state(aka new state).To bring it in persistent state you can use any following  methods
+
+*save()
+*persist()--- JPA method
+*saveOrUpdate()
+*update()
+
+
+
+Detached(Unerged State -in JPA)
+
+if the current session is closed it goes to detached state.if you change anthing in detached object it doesnt effect the database
+
+
+Removed State
+
+remove object from database
+
+if something doesnt in persitence state (in the database) you cant remove it
+if you try to delete a object in detached state it give you illeagale arguement state
+
+if you dont open a trascation database doesnt update
+
+
+put the try catch on service layer
+
+repo only can contain commit
+

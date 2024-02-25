@@ -1,10 +1,16 @@
 package lk.ijse.entity;
 
 import lk.ijse.embedded.OrderDetailPK;
+import lombok.*;
 
 import javax.persistence.*;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 @Entity(name = "order_details")
 public class OrderDetail {
 

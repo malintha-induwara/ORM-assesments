@@ -1,6 +1,8 @@
 package lk.ijse;
 
 import lk.ijse.entity.Customer;
+import lk.ijse.entity.Order;
+import lk.ijse.projection.CustomerProjection;
 import lk.ijse.repository.CustomerRepository;
 
 import java.util.List;
@@ -15,11 +17,12 @@ public class Main {
 //        repo.saveCustomer(getCustomer());
 
 
-        //Get Customer
+//        //Get Customer
 //        CustomerRepository  repo = new CustomerRepository();
 //        Customer customer = repo.getCustomer(1);
 //        System.out.println(customer);
 //
+
 
         //SQL Query
 //        CustomerRepository  repo= new CustomerRepository();
@@ -30,6 +33,27 @@ public class Main {
 //        CustomerRepository  repo= new CustomerRepository();
 //        List<Customer> allCustomerJPQL = repo.getAllCustomerJPQL();
 //        allCustomerJPQL.forEach(System.out::println);
+
+
+//        CustomerRepository customerRepository = new CustomerRepository();
+//        List<Order> ordersByCustomerId = customerRepository.getOrdersByCustomerId(1);
+
+
+//        for (Order order:ordersByCustomerId){
+//            System.out.println(order);
+//        }
+
+//        CustomerRepository customerRepository = new CustomerRepository();
+//        List<Customer> customerHQL = customerRepository.getCustomerHQL();
+//
+//       for (Customer customer:customerHQL){
+//           System.out.println(customer);
+//       }
+
+        CustomerRepository customerRepository = new CustomerRepository();
+        List<CustomerProjection> customerProjection = customerRepository.getCustomerProjection();
+
+        customerProjection.forEach(System.out::println);
 
 
     }

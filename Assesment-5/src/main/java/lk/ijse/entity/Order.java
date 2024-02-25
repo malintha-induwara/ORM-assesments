@@ -1,8 +1,6 @@
 package lk.ijse.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -12,7 +10,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -39,5 +38,17 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "order")
     private List<OrderDetail> orderDetailsList = new ArrayList<>();
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", order_data_time=" + order_data_time +
+//                ", customer=" + customer +
+//                ", orderDetailsList=" + orderDetailsList +
+                '}';
+    }
 }
 
