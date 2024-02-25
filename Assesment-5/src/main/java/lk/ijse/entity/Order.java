@@ -32,6 +32,8 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+//    @ManyToMany(cascade = CascadeType.ALL,fetch =FetchType.LAZY)
+//    private List<Item> items = new ArrayList<>();
 
     //Fetch meaning retrieve or get
 

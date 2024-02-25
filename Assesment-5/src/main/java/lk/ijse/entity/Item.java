@@ -34,6 +34,9 @@ public class Item {
     @Column(name = "unit_prce")
     private double unitPrice;
 
+//    @ManyToMany(mappedBy = "items")
+//    private List<Order> orders = new ArrayList<>();
+
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY ,mappedBy = "item")
     private List<OrderDetail> orderDetails = new ArrayList<>();
