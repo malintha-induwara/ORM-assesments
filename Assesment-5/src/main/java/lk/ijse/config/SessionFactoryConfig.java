@@ -15,6 +15,34 @@ public class SessionFactoryConfig {
     private final SessionFactory sessionFactory;
 
 
+    // 1. creates a service registry
+        /*StandardServiceRegistry serviceRegistry
+                = new StandardServiceRegistryBuilder()
+                .configure()
+                .build();*/
+
+    // 2. creates a Metadata object
+        /*Metadata metadata = new MetadataSources(serviceRegistry)
+                .addAnnotatedClass(Customer.class)
+                .getMetadataBuilder()
+                .build();*/
+
+
+    // 3. create a Session Factory
+        /*sessionFactory = metadata
+                .buildSessionFactory();*/
+
+    //Shorten the above code
+        /*sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder()
+                .configure()
+                .build())
+                .addAnnotatedClass(Customer.class)
+                .getMetadataBuilder()
+                .build()
+                .buildSessionFactory();*/
+
+    //using configuration object
+
     private SessionFactoryConfig(){
         this.sessionFactory= new Configuration().configure().addAnnotatedClass(Customer.class)
                 .addAnnotatedClass(Order.class)

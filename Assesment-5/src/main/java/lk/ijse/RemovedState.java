@@ -17,7 +17,6 @@ public class RemovedState {
 
 
 
-
         Transaction transaction = session.beginTransaction();
         session.delete(customer);
         transaction.commit();

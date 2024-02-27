@@ -5,33 +5,41 @@ import lk.ijse.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class DetachedState {
+public class TransientPersistentDetachedState {
 
     public static void main(String[] args) {
+        Session session = SessionFactoryConfig.getInstance().getSession();
 
-
+        //Transient State
         Customer customer = new Customer();
         customer.setName("Kasun");
         customer.setAddress("Galle");
 
-        //Persistent State
-        Session session = SessionFactoryConfig.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        int customerId = (int) session.save(customer);
-
 
         boolean isContains = session.contains(customer);
-        if (isContains) {
+        if (isContains){
+            System.out.println("This Object is Not Transient");
+        }else {
+            System.out.println("This Object is in Transient State");
+        }
+
+
+        //Persistent State
+
+        Transaction transaction = session.beginTransaction();
+        int customerId = (int) session.save(customer);
+        transaction.commit();
+        System.out.println(customerId);
+
+        boolean  isPersistence = session.contains(customer);
+        if (isPersistence) {
             System.out.println("Customer is in the Persistent State");
         } else {
             System.out.println("Customer is in the Transient State");
         }
-
-        transaction.commit();
         session.close();
 
 
-        //
 
         //Detached State
         Session detachSession = SessionFactoryConfig.getInstance().getSession();
@@ -46,7 +54,7 @@ public class DetachedState {
         }
 
 
-        //Persistent State
+        //Return to Persistent State
         customer.setAddress("Matara");
         detachSession.save(customer);
 
